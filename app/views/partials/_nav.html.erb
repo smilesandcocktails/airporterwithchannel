@@ -1,0 +1,66 @@
+<!-- Nav Section -->
+<nav class="nav">
+  <div class="nav-left">
+    <%= link_to root_path, class: "nav-item" do %>
+      <h1 class="title">Airporter</h1>
+    <% end %>
+  </div>
+
+  <!-- <div class="nav-center">
+    <a class="nav-item">
+      <span class="icon">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+    <a class="nav-item">
+      <span class="icon">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+  </div> -->
+
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+  <span class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+
+  <% if user_signed_in? %>
+  Logged in as &nbsp <strong><%= current_user.email %></strong>. &nbsp
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> &nbsp|&nbsp
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
+  <div class="nav-right nav-menu">
+    <%= link_to "Home", root_path, class: "nav-item" %>
+    <%= link_to "All Flights", flights_path, class: "nav-item" %>
+
+    <!-- <div class="nav-item">
+      <div class="field is-grouped">
+        <p class="control">
+          <a class="button" >
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+            <span>Tweet</span>
+          </a>
+        </p>
+        <p class="control">
+          <a class="button is-primary">
+            <span class="icon">
+              <i class="fa fa-download"></i>
+            </span>
+            <span>Download</span>
+          </a>
+        </p>
+      </div>
+    </div> -->
+  </div>
+</nav>
